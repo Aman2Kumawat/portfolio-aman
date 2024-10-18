@@ -1,0 +1,476 @@
+/* Define CSS Variables for Theme Colors */
+:root {
+    --primary-color: #029cfe;
+    --bg-dark: #101010;
+    --bg-light: #1b1b1b;
+    --text-color: #ffffff;
+    --text-muted: #b5b5b5;
+}
+
+/* General styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-light);
+    padding: 20px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--text-color);
+}
+
+.search-bar {
+    display: flex;
+    background-color: #292929;
+    border-radius: 5px;
+}
+
+.search-bar input {
+    border: none;
+    padding: 8px;
+    background-color: transparent;
+    color: var(--text-color);
+    outline: none;
+}
+
+.search-bar button {
+    background-color: var(--primary-color);
+    color: var(--bg-light);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #029cfe;
+}
+
+/* Introduction section */
+.intro-section {
+    display: flex;
+    /* Use flexbox for layout */
+    flex-direction: column;
+    /* Stack children vertically */
+    text-align: center;
+    padding: 60px;
+    opacity: 0;
+    /* Start hidden */
+    transform: translateY(20px);
+    /* Start slightly lower */
+    animation: fadeInUp 1s ease-in forwards;
+    /* Apply animation */
+}
+
+.intro-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    /* Space between image and text */
+}
+
+.intro-image img {
+    width: 300px;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+    opacity: 0;
+    /* Start hidden */
+    transform: translateX(-100%);
+    /* Start off-screen to the left */
+    animation: fadeInScale 1.5s ease-in-out forwards, floatImage 5s ease-in-out infinite;
+    /* Apply image animation and floating */
+}
+
+/* Floating animation */
+@keyframes floatImage {
+    0% {
+        transform: translateY(0);
+        /* Start at the original position */
+    }
+
+    50% {
+        transform: translateY(-15px);
+        /* Float up by 15px */
+    }
+
+    100% {
+        transform: translateY(0);
+        /* Return to the original position */
+    }
+}
+
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: var(--bg-light);
+    border-radius: 20px;
+    opacity: 0;
+    /* Start hidden */
+    transform: translateY(20px);
+    /* Start slightly lower */
+    animation: fadeInUp 1s ease-in 0.3s forwards;
+    /* Delay animation */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        /* Start hidden */
+        transform: translateY(20px);
+        /* Move up */
+    }
+
+    100% {
+        opacity: 1;
+        /* Fully visible */
+        transform: translateY(0);
+        /* End at original position */
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%) scale(0.8);
+        /* Start off-screen */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        /* End at original position */
+    }
+}
+
+.intro-text h1 {
+    font-size: 48px;
+}
+
+.intro-text h1 span {
+    color: var(--primary-color);
+}
+
+.intro-text p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: var(--text-muted);
+}
+
+.talk-button {
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: var(--bg-light);
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.talk-button:hover {
+    background-color: #029cfe;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .intro-section {
+        flex-direction: column;
+        /* Stack elements vertically */
+    }
+
+    .intro-image {
+        order: 2;
+        /* Set image to appear first */
+        margin-bottom: 20px;
+        /* Reduce space between image and text on small screens */
+    }
+
+    .intro-content {
+        order: 1;
+        /* Set content to appear after the image */
+        padding: 20px;
+        /* Adjust padding for smaller screens */
+        display: flex;
+        /* Use flexbox for layout */
+        flex-direction: column;
+        /* Stack content vertically */
+    }
+
+    .intro-text h1 {
+        font-size: 36px;
+        /* Reduce font size for headers on smaller screens */
+    }
+
+    .intro-text p {
+        font-size: 16px;
+        /* Reduce font size for paragraphs on smaller screens */
+    }
+}
+
+
+.social-icons {
+    margin-top: 30px;
+}
+
+.social-icons a img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.1);
+}
+
+
+/* Project section */
+.project-section {
+    padding: 60px;
+    background-color: var(--bg-light);
+    text-align: center;
+}
+
+.project-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background-color: #292929;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.project-link {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--bg-light);
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.project-link:hover {
+    background-color: #029cfe;
+}
+
+/* Skills section */
+.skills-section {
+    text-align: center;
+    padding: 60px;
+    background-color: #101010;
+}
+
+.skills-section h2 {
+    font-size: 36px;
+    color: #029cfe;
+    margin-bottom: 40px;
+}
+
+/* Skills Container Layout */
+.skills-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.skill {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.skill h3 {
+    color: #ffffff;
+    margin-top: 40px;
+}
+
+/* Hexagon Shape */
+.hexagon {
+    display: flex;
+    width: 100px;
+    height: 55px;
+    background-color: #ffffff;
+    position: relative;
+    margin: 0 auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hexagon:before,
+.hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}
+
+.hexagon:before {
+    bottom: 100%;
+    border-bottom: 27.5px solid #ffffff;
+}
+
+.hexagon:after {
+    top: 100%;
+    width: 0;
+    border-top: 27.5px solid #ffffff;
+}
+
+/* Icon Styling inside Hexagons */
+.hexagon img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+}
+
+/* Animation on Hover */
+.skill:hover {
+    transform: translateY(-10px);
+}
+
+.skill:hover .hexagon {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px #029cfe;
+}
+
+/* Add Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skill {
+    animation: fadeIn 0.5s ease-in-out both;
+}
+
+.skill:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.skill:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.skill:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.skill:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.skill:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+
+/* Footer Styling */
+.footer {
+    background-color: var(--bg-light);
+    padding: 40px;
+    text-align: center;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    margin: 20px;
+}
+
+.footer-section h3 {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.footer-section p {
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
